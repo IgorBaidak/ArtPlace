@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseCore
+import Firebase
 
 //@main
 //class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,8 +28,18 @@ import FirebaseCore
         didFinishLaunchingWithOptions launchOptions:
                        [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+//          Auth.auth().addStateDidChangeListener { (auth, user) in
+//              if user == nil {
+//                  self.showModalAuth()
+//              }
+//          }
         return true
       }
+//        func showModalAuth() {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "AuthRegVC") as! AuthRegVC
+//            self.window?.rootViewController?.present(vc, animated: true, completion: nil)
+//        }
     }
     // MARK: UISceneSession Lifecycle
 
@@ -43,5 +54,3 @@ import FirebaseCore
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-

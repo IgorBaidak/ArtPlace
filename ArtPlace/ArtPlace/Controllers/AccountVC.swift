@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseCore
 
 class AccountVC: UIViewController {
 
-    @IBOutlet var superView: UIView!
      
     override func viewDidLoad() {
         super.viewDidLoad()
