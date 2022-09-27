@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33474A4228E37152001B1BE6 /* DetailUserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33474A4128E37152001B1BE6 /* DetailUserInfoVC.swift */; };
 		3368831028D50DBE00581F80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368830F28D50DBE00581F80 /* AppDelegate.swift */; };
 		3368831228D50DBE00581F80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368831128D50DBE00581F80 /* SceneDelegate.swift */; };
 		3368831728D50DBE00581F80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3368831528D50DBE00581F80 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33474A4128E37152001B1BE6 /* DetailUserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserInfoVC.swift; sourceTree = "<group>"; };
 		3368830C28D50DBE00581F80 /* ArtPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3368830F28D50DBE00581F80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3368831128D50DBE00581F80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				3368832828DA12CC00581F80 /* AccountVC.swift */,
 				3368832A28DA1F4200581F80 /* AuthRegVC.swift */,
+				33474A4128E37152001B1BE6 /* DetailUserInfoVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			files = (
 				3368831028D50DBE00581F80 /* AppDelegate.swift in Sources */,
 				3368832928DA12CC00581F80 /* AccountVC.swift in Sources */,
+				33474A4228E37152001B1BE6 /* DetailUserInfoVC.swift in Sources */,
 				3368831228D50DBE00581F80 /* SceneDelegate.swift in Sources */,
 				3368832B28DA1F4200581F80 /* AuthRegVC.swift in Sources */,
 			);

@@ -18,18 +18,26 @@ class AuthRegVC: UIViewController {
     @IBOutlet weak var surnameTF: UITextField! { didSet { surnameTF.isHidden = true }}
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var typeArtist: UISegmentedControl! { didSet { typeArtist.isHidden = true }}
     @IBOutlet weak var statusAccountAction: UIButton!
+    @IBOutlet weak var haveAccount: UIButton! { didSet { haveAccount.isEnabled = false }}
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton! { didSet { registrationButton.isEnabled = false }}
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        nickNameTF.delegate = self
-//        nameTF.delegate = self
-//        surnameTF.delegate = self
-//        passwordTF.delegate = self
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     
     @IBAction func notAccountAction() {
         registrationButton.isEnabled = true
@@ -37,30 +45,29 @@ class AuthRegVC: UIViewController {
         nickNameTF.isHidden = false
         nameTF.isHidden = false
         surnameTF.isHidden = false
+        emailTF.text = ""
+        passwordTF.text = ""
         title = "Registration"
+        typeArtist.isHidden = false
         statusAccountAction.isEnabled = false
+        haveAccount.isEnabled = true
+    }
+    @IBAction func haveAccountAction() {
+        registrationButton.isEnabled = false
+        signInButton.isEnabled = true
+        nickNameTF.isHidden = true
+        nameTF.isHidden = true
+        surnameTF.isHidden = true
+        emailTF.text = ""
+        passwordTF.text = ""
+        title = "Login"
+        typeArtist.isHidden = true
+        statusAccountAction.isEnabled = true
+        haveAccount.isEnabled = false
     }
     
     @IBAction func registrationButtonAction() {
-//        if let nick = nickNameTF.text?.isEmpty,
-//           let name = nameTF.text?.isEmpty,
-//           let surname = surnameTF.text?.isEmpty,
-//           let email = emailTF.text?.isEmpty,
-//           let password = passwordTF.text?.isEmpty {
-//               showAlert()
-//        } else {
-//            Auth.auth().createUser(withEmail: emailTF.text!, password: passwordTF.text!) { [self] (result, error) in
-//                if error == nil {
-//                    if let result = result {
-//                    print (result.user.uid)
-//                    let dataBase = Database.database().reference().child("users")
-//                        dataBase.child(result.user.uid).updateChildValues(["nick" : nickNameTF, "name" : nameTF, "surname" : surnameTF, "email" : emailTF])
-//            }
-//        }
-//    }
-//}
-        
-       
+
         if let nick = nickNameTF.text, !nick.isEmpty,
            let name = nameTF.text, !name.isEmpty,
            let surname = surnameTF.text, !surname.isEmpty,
@@ -74,7 +81,6 @@ class AuthRegVC: UIViewController {
                         let dataBase = Database.database().reference().child("users")
                         dataBase.child(result.user.uid).updateChildValues(["nick" : nick, "name" : name, "surname" : surname, "email" : email])
                         DispatchQueue.main.async {
-                            //self.performSegue(withIdentifier: "goToAccount", sender: nil)
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
                             self.navigationController?.pushViewController(vc, animated: true)
@@ -88,8 +94,17 @@ class AuthRegVC: UIViewController {
         
     }
     
+    
     @IBAction func signInButtonAction() {
-        
+        Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!) { (result, error)  in
+            if error == nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.showAlert()
+            }
+        }
     }
     
     
