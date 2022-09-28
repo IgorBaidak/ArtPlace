@@ -8,7 +8,8 @@
 import UIKit
 import FirebaseCore
 import Firebase
-
+import FirebaseStorage
+import FirebaseFirestore
 //@main
 //class AppDelegate: UIResponder, UIApplicationDelegate {
 //
@@ -24,22 +25,13 @@ import Firebase
 
       var window: UIWindow?
 
-      func application(_ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions:
+      func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
                        [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-//          Auth.auth().addStateDidChangeListener { (auth, user) in
-//              if user == nil {
-//                  self.showModalAuth()
-//              }
-//          }
+        let storage = Storage.storage()
+        
         return true
       }
-//        func showModalAuth() {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "AuthRegVC") as! AuthRegVC
-//            self.window?.rootViewController?.present(vc, animated: true, completion: nil)
-//        }
     }
     // MARK: UISceneSession Lifecycle
 

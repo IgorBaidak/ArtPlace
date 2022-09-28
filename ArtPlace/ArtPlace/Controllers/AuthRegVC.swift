@@ -20,9 +20,9 @@ class AuthRegVC: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var typeArtist: UISegmentedControl! { didSet { typeArtist.isHidden = true }}
     @IBOutlet weak var statusAccountAction: UIButton!
-    @IBOutlet weak var haveAccount: UIButton! { didSet { haveAccount.isEnabled = false }}
+    @IBOutlet weak var haveAccount: UIButton! { didSet { haveAccount.isHidden = true }}
     @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var registrationButton: UIButton! { didSet { registrationButton.isEnabled = false }}
+    @IBOutlet weak var registrationButton: UIButton! { didSet { registrationButton.isHidden = true }}
     
 
     override func viewDidLoad() {
@@ -40,8 +40,8 @@ class AuthRegVC: UIViewController {
     
     
     @IBAction func notAccountAction() {
-        registrationButton.isEnabled = true
-        signInButton.isEnabled = false
+        registrationButton.isHidden = false
+        signInButton.isHidden = true
         nickNameTF.isHidden = false
         nameTF.isHidden = false
         surnameTF.isHidden = false
@@ -49,12 +49,12 @@ class AuthRegVC: UIViewController {
         passwordTF.text = ""
         title = "Registration"
         typeArtist.isHidden = false
-        statusAccountAction.isEnabled = false
-        haveAccount.isEnabled = true
+        statusAccountAction.isHidden = true
+        haveAccount.isHidden = false
     }
     @IBAction func haveAccountAction() {
-        registrationButton.isEnabled = false
-        signInButton.isEnabled = true
+        registrationButton.isHidden = true
+        signInButton.isHidden = false
         nickNameTF.isHidden = true
         nameTF.isHidden = true
         surnameTF.isHidden = true
@@ -62,8 +62,8 @@ class AuthRegVC: UIViewController {
         passwordTF.text = ""
         title = "Login"
         typeArtist.isHidden = true
-        statusAccountAction.isEnabled = true
-        haveAccount.isEnabled = false
+        statusAccountAction.isHidden = false
+        haveAccount.isHidden = true
     }
     
     @IBAction func registrationButtonAction() {

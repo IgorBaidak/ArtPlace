@@ -8,17 +8,31 @@
 import UIKit
 import Firebase
 import FirebaseCore
+import FirebaseStorage
+import FirebaseFirestore
 
 class AccountVC: UIViewController {
 
+    @IBOutlet weak var blurAvatar: UIImageView!
+    @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var surname: UILabel!
     
+    let storage = Storage.storage()
+    let storageRef = Storage.storage().reference()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    
+    
+    // MARK: Action's
+    @IBAction func addAvatar() {
+        
     }
     
     @IBAction func addAction(_ sender: UIBarButtonItem) {
