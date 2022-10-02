@@ -18,6 +18,7 @@ class AccountVC: UIViewController {
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var surname: UILabel!
+    @IBOutlet weak var myContentView: UILabel! { didSet{ myContentView.layer.cornerRadius = 15 } }
     
     let storage = Storage.storage()
     let storageRef = Storage.storage().reference()
@@ -32,7 +33,9 @@ class AccountVC: UIViewController {
     
     // MARK: Action's
     @IBAction func addAvatar() {
-        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
     }
     
     @IBAction func addAction(_ sender: UIBarButtonItem) {
@@ -72,5 +75,15 @@ class AccountVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
+
+    extension AccountVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            picker.dismiss(animated: true)
+            guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            avatar.image = image
+        }
+}
+
+

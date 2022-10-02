@@ -276,11 +276,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -372,6 +367,7 @@
                     <connections>
                         <outlet property="avatar" destination="Qk8-W6-YPo" id="ZOs-IQ-LJD"/>
                         <outlet property="blurAvatar" destination="lZJ-KW-3zq" id="I6S-sH-bzN"/>
+                        <outlet property="myContentView" destination="efy-V9-8MO" id="muZ-5h-fQX"/>
                         <outlet property="name" destination="ojg-PL-08o" id="dak-4D-rkz"/>
                         <outlet property="nickName" destination="DjY-JT-KlH" id="ZWj-UM-nFe"/>
                         <outlet property="surname" destination="CA6-dH-z7e" id="JTX-ew-zi2"/>
