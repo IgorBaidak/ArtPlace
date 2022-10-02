@@ -187,11 +187,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VvL-jQ-Lw6" secondAttribute="height" multiplier="1:1" id="qHY-R2-dWE"/>
                                 </constraints>
-                                <blurEffect style="light"/>
+                                <blurEffect style="regular"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="175"/>
@@ -367,6 +367,7 @@
                     <connections>
                         <outlet property="avatar" destination="Qk8-W6-YPo" id="ZOs-IQ-LJD"/>
                         <outlet property="blurAvatar" destination="lZJ-KW-3zq" id="I6S-sH-bzN"/>
+                        <outlet property="blurEffectView" destination="FaR-iJ-7ma" id="hGg-U8-XFI"/>
                         <outlet property="myContentView" destination="efy-V9-8MO" id="muZ-5h-fQX"/>
                         <outlet property="name" destination="ojg-PL-08o" id="dak-4D-rkz"/>
                         <outlet property="nickName" destination="DjY-JT-KlH" id="ZWj-UM-nFe"/>

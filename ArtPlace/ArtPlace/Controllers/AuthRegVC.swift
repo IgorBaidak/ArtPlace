@@ -12,6 +12,7 @@ import SwiftUI
 
 class AuthRegVC: UIViewController {
     
+    // MARK: Outlet's
     
     @IBOutlet weak var nickNameTF: UITextField! { didSet { nickNameTF.isHidden = true }}
     @IBOutlet weak var nameTF: UITextField! { didSet { nameTF.isHidden = true }}
@@ -38,6 +39,7 @@ class AuthRegVC: UIViewController {
         }
     }
     
+    // MARK: Action's
     
     @IBAction func notAccountAction() {
         registrationButton.isHidden = false
@@ -84,6 +86,7 @@ class AuthRegVC: UIViewController {
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
                             self.navigationController?.pushViewController(vc, animated: true)
+                            
                         }
                     }
                 }
@@ -117,6 +120,8 @@ class AuthRegVC: UIViewController {
         guard let vc = segue.destination as? AccountVC else { return }
     }
      */
+    
+    // MARK: Alert
     
     func showAlert() {
         let alert = UIAlertController(title: "Error", message: "Please, fill in all fields!", preferredStyle: .alert)
