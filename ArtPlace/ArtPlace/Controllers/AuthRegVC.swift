@@ -81,7 +81,7 @@ class AuthRegVC: UIViewController {
                     if let result = result {
                         print (result.user.uid)
                         let dataBase = Database.database().reference().child("users")
-                        dataBase.child(result.user.uid).updateChildValues(["nick" : nick, "name" : name, "surname" : surname, "email" : email])
+                        dataBase.child(result.user.uid).updateChildValues(["nick" : nick, "name" : name, "surname" : surname, "avatarURL": String(), "email" : email])
                         DispatchQueue.main.async {
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC

@@ -14,9 +14,9 @@ import FirebaseFirestore
 class AccountVC: UIViewController//, UIImagePickerControllerDelegate & UINavigationControllerDelegate
 {
 
-    @IBOutlet weak var blurAvatar: UIImageView! { didSet { blurAvatar.layer.cornerRadius = 125 } }
-    @IBOutlet weak var avatar: UIImageView! { didSet { avatar.layer.cornerRadius = 120 } }
-    @IBOutlet weak var blurEffectView: UIView! { didSet { blurEffectView.layer.cornerRadius = 125 } }
+    @IBOutlet weak var blurAvatar: UIImageView!
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var blurEffectView: UIView!
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var surname: UILabel!
@@ -27,6 +27,7 @@ class AccountVC: UIViewController//, UIImagePickerControllerDelegate & UINavigat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        blurEffectView.layer.cornerRadius = blurEffectView.frame.size.width / 2
         
     }
     
@@ -81,10 +82,10 @@ class AccountVC: UIViewController//, UIImagePickerControllerDelegate & UINavigat
         
         let ref = Storage.storage().reference().child("avatars").child(currentUserID)
         guard let imageData = avatar.image?.jpegData(compressionQuality: 0.4) else { return }
-//        let metadata = StorageMetadata()
-//        metadata.contentType = "image/jpeg"
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
         
-        ref.putData(imageData) { (metadata, error) in
+        ref.putData(imageData, metadata: metadata) { (metadata, error) in
             guard let _ = metadata else {
                 complition(.failure(error!))
                 return
@@ -120,11 +121,10 @@ class AccountVC: UIViewController//, UIImagePickerControllerDelegate & UINavigat
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
             avatar.image = image
             blurAvatar.image = image
-            upload(currentUserID: currentUserID!, photo: avatar.image!) { (userResult) in
+            upload(currentUserID: currentUserID!, photo: avatar.image!) { [self] (userResult) in
                 switch userResult {
                 case .success(let url):
-                    Database.database().reference().child("users").updateChildValues(["avatarURL" : url.absoluteString])
-                    
+                    Database.database().reference().child("users").child(currentUserID!).updateChildValues(["avatarURL" : url.absoluteString])
                 case .failure(let error):
                     print(error)
                 }
