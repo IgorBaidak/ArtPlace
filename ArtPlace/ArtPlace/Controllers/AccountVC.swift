@@ -15,17 +15,15 @@ class AccountVC: UIViewController//, UIImagePickerControllerDelegate & UINavigat
 {
 
     @IBOutlet weak var blurAvatar: UIImageView! { didSet { blurAvatar.layer.cornerRadius = 125 } }
-    @IBOutlet weak var avatar: UIImageView! { didSet { avatar.layer.cornerRadius = 110 } }
+    @IBOutlet weak var avatar: UIImageView! { didSet { avatar.layer.cornerRadius = 120 } }
     @IBOutlet weak var blurEffectView: UIView! { didSet { blurEffectView.layer.cornerRadius = 125 } }
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var surname: UILabel!
     @IBOutlet weak var myContentView: UILabel! { didSet{ myContentView.layer.cornerRadius = 15 } }
-    
-//    let storage = Storage.storage()
-//    let storageRef = Storage.storage().reference()
 
     var ref = Database.database().reference()
+    var currentUserID = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,29 +41,6 @@ class AccountVC: UIViewController//, UIImagePickerControllerDelegate & UINavigat
         imagePicker.sourceType = .photoLibrary
         //imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
-        func upload(currentUserId: String, photo: UIImage, complition: @escaping (Result<URL, Error>) -> Void) {
-            let ref = Storage.storage().reference().child("avatars").child("userId")
-            
-            guard let imageData = avatar.image?.jpegData(compressionQuality: 0.4) else { return }
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpeg"
-            
-            ref.putData(imageData, metadata: metadata) { (metadata, error) in
-                guard let _ = metadata else {
-                    complition(.failure(error!))
-                    return
-                }
-                ref.downloadURL { (url, error) in
-                    guard let url = url else {
-                        complition(.failure(error!))
-                        return
-                }
-                    complition(.success(url))
-        }
-                
-            }
-        }
-        
     }
     
     
@@ -102,29 +77,29 @@ class AccountVC: UIViewController//, UIImagePickerControllerDelegate & UINavigat
     }
     
     // MARK: Func's
-    
-//    private func upload(currentUserId: String, photo: UIImage, complition: @escaping (Result<URL, Error>) -> Void) {
-//        let ref = Storage.storage().reference().child("avatars").child("userId")
-//
-//        guard let imageData = avatar.image?.jpegData(compressionQuality: 0.4) else { return }
+    func upload(currentUserID: String, photo: UIImage, complition: @escaping (Result<URL, Error>) -> Void) {
+        
+        let ref = Storage.storage().reference().child("avatars").child(currentUserID)
+        guard let imageData = avatar.image?.jpegData(compressionQuality: 0.4) else { return }
 //        let metadata = StorageMetadata()
 //        metadata.contentType = "image/jpeg"
-//
-//        ref.putData(imageData, metadata: metadata) { (metadata, error) in
-//            guard let _ = metadata else {
-//                complition(.failure(error!))
-//                return
-//            }
-//            ref.downloadURL { (url, error) in
-//                guard let url = url else {
-//                    complition(.failure(error!))
-//                    return
-//            }
-//                complition(.success(url))
-//    }
-//
-//        }
-//    }
+        
+        ref.putData(imageData) { (metadata, error) in
+            guard let _ = metadata else {
+                complition(.failure(error!))
+                return
+            }
+            ref.downloadURL { (url, error) in
+                guard let url = url else {
+                    complition(.failure(error!))
+                    return
+            }
+                complition(.success(url))
+    }
+            
+        }
+    }
+    
 }
 
     /*
@@ -141,9 +116,19 @@ class AccountVC: UIViewController//, UIImagePickerControllerDelegate & UINavigat
     extension AccountVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             picker.dismiss(animated: true)
+            print(info)
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
             avatar.image = image
             blurAvatar.image = image
+            upload(currentUserID: currentUserID!, photo: avatar.image!) { (userResult) in
+                switch userResult {
+                case .success(let url):
+                    Database.database().reference().child("users").updateChildValues(["avatarURL" : url.absoluteString])
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
 }
 
