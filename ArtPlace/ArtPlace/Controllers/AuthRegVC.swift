@@ -124,7 +124,7 @@ class AuthRegVC: UIViewController {
     // MARK: Alert
     
     func showAlert() {
-        let alert = UIAlertController(title: "Error", message: "Please, fill in all fields!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: "Entered data, is not correct!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
