@@ -11,9 +11,8 @@ import FirebaseCore
 import FirebaseStorage
 import FirebaseFirestore
 
-class AccountVC: UIViewController
-{
-
+class AccountVC: UIViewController {
+    
     @IBOutlet weak var blurAvatar: UIImageView!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var blurEffectView: UIView!
@@ -21,17 +20,24 @@ class AccountVC: UIViewController
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var surname: UILabel!
     @IBOutlet weak var myContentView: UILabel! { didSet{ myContentView.layer.cornerRadius = 15 } }
-//    var blurEffect: CALayer {
-//        return blurEffectView.layer
-//    }
+    
+    
+    
     var ref = Database.database().reference()
     var currentUserID = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        blurEffectView.layer.cornerRadius = 123
         blurEffectView.clipsToBounds = true
+        blurEffectView.layer.cornerRadius = 140
+        blurEffectView.layer.maskedCorners = [.layerMaxXMaxYCorner,
+                                              .layerMaxXMinYCorner,
+                                              .layerMinXMaxYCorner,
+                                              .layerMinXMinYCorner]
+        
     }
+    
+    
     
     
     
@@ -96,14 +102,15 @@ class AccountVC: UIViewController
                 guard let url = url else {
                     complition(.failure(error!))
                     return
-            }
+                }
                 complition(.success(url))
-    }
+            }
             
         }
     }
-    
 }
+    
+
 
     /*
     // MARK: - Navigation
