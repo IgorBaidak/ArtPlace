@@ -10,24 +10,40 @@ import Firebase
 import FirebaseCore
 import FirebaseStorage
 import FirebaseFirestore
+import AVFoundation
 
 class AccountVC: UIViewController {
     
+    // MARK: Outlet's
     @IBOutlet weak var blurAvatar: UIImageView!
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var blurEffectView: UIView!
+    @IBOutlet weak var avatar: UIImageView! { didSet { avatar.layer.borderWidth = 0.5
+        avatar.layer.borderColor = .init(red: 255, green: 255, blue: 255, alpha: 1
+    )}}
+    @IBOutlet weak var blurEffectView: UIView! { didSet { blurEffectView.layer.borderWidth = 4
+        blurEffectView.layer.borderColor = .init(red: 255, green: 255, blue: 255, alpha: 1)
+    }}
     @IBOutlet weak var nickName: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var surname: UILabel!
     @IBOutlet weak var myContentView: UILabel! { didSet{ myContentView.layer.cornerRadius = 15 } }
+    @IBOutlet weak var addAvatarButton: UIButton!
     
+    @IBOutlet weak var tableView: UITableView!
     
     
     var ref = Database.database().reference()
     var currentUserID = Auth.auth().currentUser?.uid
     
+    let dj = PlaylistDJ.trackList
+    let songer = PlaylistSonger.trackList
+    let musician = PlaylistMusician.trackList
+    
+    // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        playCell()
+        downloadAvatar()
+        // делаем круглым Blur Effect
         blurEffectView.clipsToBounds = true
         blurEffectView.layer.cornerRadius = 140
         blurEffectView.layer.maskedCorners = [.layerMaxXMaxYCorner,
@@ -35,10 +51,38 @@ class AccountVC: UIViewController {
                                               .layerMinXMaxYCorner,
                                               .layerMinXMinYCorner]
         
+        // достаем необходимые значения из Realtime Database
+        ref.child("users").child(currentUserID!).child("name").observeSingleEvent(of: .value) { (snapshot) in
+            guard snapshot != nil else { return }
+            print(snapshot)
+            let userName = snapshot.value as? String ?? "name"
+            DispatchQueue.main.async {
+                self.name.text = userName
+            }
+        }
+        ref.child("users").child(currentUserID!).child("surname").observeSingleEvent(of: .value) { (snapshot) in
+            guard snapshot != nil else { return }
+            print(snapshot)
+            let userSurname = snapshot.value as? String ?? "surname"
+            self.surname.text = userSurname
+        }
+        ref.child("users").child(currentUserID!).child("nick").observeSingleEvent(of: .value) { (snapshot) in
+            guard snapshot != nil else { return }
+            print(snapshot)
+            let userNick = snapshot.value as? String ?? "nick"
+            self.nickName.text = userNick
+        }
+        ref.child("users").child(currentUserID!).child("typeArtist").observeSingleEvent(of: .value) { (snapshot) in
+            guard snapshot != nil else { return }
+            print(snapshot)
+            let artist = snapshot.value as? String ?? "typeArtist"
+            self.title = artist
+        }
     }
     
     
-    
+    // MARK: - Table view data source
+
     
     
     // MARK: Action's
@@ -48,13 +92,16 @@ class AccountVC: UIViewController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
-        //imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
+        
     }
     
     
-    @IBAction func addAction(_ sender: UIBarButtonItem) {
+    @IBAction func addAction() {
         
+//        if let localAudioURL = Bundle.main.url(forResource: "Test", withExtension: "Audio") {
+//            uploadAudio(localAudioURL: localAudioURL)
+//        }
     }
     
     
@@ -86,6 +133,7 @@ class AccountVC: UIViewController {
     }
     
     // MARK: Func's
+    // загружаем аватарку в Storage Database
     func upload(currentUserID: String, photo: UIImage, complition: @escaping (Result<URL, Error>) -> Void) {
         
         let ref = Storage.storage().reference().child("avatars").child(currentUserID)
@@ -108,8 +156,22 @@ class AccountVC: UIViewController {
             
         }
     }
+    
+    func downloadAvatar() {
+        let avatarRef = Storage.storage().reference().child("avatars").child(currentUserID!)
+        avatarRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+          } else {
+            let image = UIImage(data: data!)
+              self.avatar.image = image
+          }
+        }
+    }
+    
+
 }
     
+
 
 
     /*
@@ -122,7 +184,7 @@ class AccountVC: UIViewController {
     }
     */
     
-
+    // MARK: Extension's
     extension AccountVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             picker.dismiss(animated: true)
@@ -139,6 +201,32 @@ class AccountVC: UIViewController {
                 }
             }
         }
+}
+
+extension AccountVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+                return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // здесь должна быть функция playCell
+    }
+    
+    private func playCell() {
+                 let audioRef = Storage.storage().reference().child("audio").child("RASA - Погудим.mp3")
+                    audioRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
+    
+                    let player = AVPlayer()
+                        player.play()
+        }
+    }
+    
 }
 
 

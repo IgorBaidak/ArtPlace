@@ -25,6 +25,14 @@ class AuthRegVC: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var registrationButton: UIButton! { didSet { registrationButton.isHidden = true }}
     
+    
+    private var currentArtist: TypeArtist = .DJ {
+        didSet {
+            print(currentArtist)
+        }
+    }
+    
+   // let artist = currentArtist
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +77,6 @@ class AuthRegVC: UIViewController {
     }
     
     @IBAction func registrationButtonAction() {
-
         if let nick = nickNameTF.text, !nick.isEmpty,
            let name = nameTF.text, !name.isEmpty,
            let surname = surnameTF.text, !surname.isEmpty,
@@ -81,12 +88,11 @@ class AuthRegVC: UIViewController {
                     if let result = result {
                         print (result.user.uid)
                         let dataBase = Database.database().reference().child("users")
-                        dataBase.child(result.user.uid).updateChildValues(["nick" : nick, "name" : name, "surname" : surname, "avatarURL": String(), "email" : email])
+                        dataBase.child(result.user.uid).updateChildValues(["nick" : nick, "name" : name, "surname" : surname, "avatarURL": String(), "audioURL": String(), "email" : email, "typeArtist" : "\(self.currentArtist)"])
                         DispatchQueue.main.async {
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
                             self.navigationController?.pushViewController(vc, animated: true)
-                            
                         }
                     }
                 }
@@ -96,6 +102,17 @@ class AuthRegVC: UIViewController {
         }
         
     }
+    
+    @IBAction func typeArtist(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            currentArtist = .DJ
+        } else if sender.selectedSegmentIndex == 1 {
+            currentArtist = .Songer
+        } else {
+            currentArtist = .Musician
+        }
+    }
+    
     
     
     @IBAction func signInButtonAction() {
