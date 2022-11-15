@@ -38,6 +38,10 @@ class AccountVC: UIViewController {
     let songer = PlaylistSonger.trackList
     let musician = PlaylistMusician.trackList
     
+    var artist: String = ""
+    
+    var currentPlaylist: [String] = []
+    
     // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +80,8 @@ class AccountVC: UIViewController {
             guard snapshot != nil else { return }
             print(snapshot)
             let artist = snapshot.value as? String ?? "typeArtist"
-            self.title = artist
+            self.artist = artist
+            self.myContentView.text = artist
         }
     }
     
@@ -157,6 +162,7 @@ class AccountVC: UIViewController {
         }
     }
     
+    
     func downloadAvatar() {
         let avatarRef = Storage.storage().reference().child("avatars").child(currentUserID!)
         avatarRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
@@ -165,6 +171,17 @@ class AccountVC: UIViewController {
             let image = UIImage(data: data!)
               self.avatar.image = image
           }
+        }
+    }
+    
+    
+    private func currentPlaylistFunc() {
+        if myContentView.text == "DJ" {
+            currentPlaylist = PlaylistDJ.trackList//.count
+        } else if myContentView.text == "Songer" {
+            currentPlaylist = PlaylistSonger.trackList//.count
+        } else {
+            currentPlaylist = PlaylistMusician.trackList//.count
         }
     }
     
@@ -206,11 +223,14 @@ class AccountVC: UIViewController {
 extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return currentPlaylist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        let nameTrack = currentPlaylist[indexPath.row]
+        cell.textLabel?.text = nameTrack
+        cell.imageView?.image = UIImage(named: nameTrack)
                 return cell
     }
     
