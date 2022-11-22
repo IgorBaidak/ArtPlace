@@ -280,7 +280,7 @@
                                                 <rect key="frame" x="279.5" y="0.0" width="134.5" height="34.5"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="All Artists"/>
                                                 <connections>
-                                                    <segue destination="ENN-eE-wEV" kind="show" id="QYJ-or-cSX"/>
+                                                    <action selector="allArtistButton" destination="ntu-bg-ygf" eventType="touchUpInside" id="jxw-Tk-WYZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -306,21 +306,12 @@
                                 <rect key="frame" x="25" y="574" width="364" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" textLabel="mhL-s9-1LO" style="IBUITableViewCellStyleDefault" id="yBI-mA-BCt" customClass="TableViewCell" customModule="ArtPlace" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" id="yBI-mA-BCt" customClass="TableViewCell" customModule="ArtPlace" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="364" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yBI-mA-BCt" id="C52-fT-oLv">
                                             <rect key="frame" x="0.0" y="0.0" width="364" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mhL-s9-1LO">
-                                                    <rect key="frame" x="20" y="0.0" width="324" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -340,16 +331,11 @@
                                     <action selector="addAvatar" destination="ntu-bg-ygf" eventType="touchUpInside" id="QxP-uU-l2D"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ryc-7m-Ywt">
-                                <rect key="frame" x="343" y="624" width="46" height="42"/>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KpI-FD-YH0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KpI-FD-YH0" firstAttribute="trailing" secondItem="FaR-Zc-gF1" secondAttribute="trailing" constant="85" id="1GM-Sa-v0c"/>
-                            <constraint firstItem="KpI-FD-YH0" firstAttribute="bottom" secondItem="ryc-7m-Ywt" secondAttribute="bottom" constant="196" id="2wH-8B-zRY"/>
-                            <constraint firstItem="ryc-7m-Ywt" firstAttribute="top" secondItem="Hdy-Yr-Zwg" secondAttribute="bottom" constant="57" id="5tf-6G-oGh"/>
                             <constraint firstItem="HVC-Xp-Qne" firstAttribute="top" secondItem="Hdy-Yr-Zwg" secondAttribute="bottom" constant="7" id="9wS-CM-Uuq"/>
                             <constraint firstItem="qDY-Wx-KvM" firstAttribute="top" secondItem="wnS-qB-c8B" secondAttribute="top" id="F3u-vJ-BVS"/>
                             <constraint firstItem="FaR-Zc-gF1" firstAttribute="leading" secondItem="KpI-FD-YH0" secondAttribute="leading" constant="85" id="Gs1-K2-DIw"/>
@@ -365,7 +351,6 @@
                             <constraint firstItem="HVC-Xp-Qne" firstAttribute="leading" secondItem="KpI-FD-YH0" secondAttribute="leading" constant="25" id="ZNN-00-ce6"/>
                             <constraint firstItem="qDY-Wx-KvM" firstAttribute="trailing" secondItem="KpI-FD-YH0" secondAttribute="trailing" id="aEe-Mf-YX1"/>
                             <constraint firstItem="9hr-4M-qP8" firstAttribute="top" secondItem="FaR-Zc-gF1" secondAttribute="bottom" constant="40" id="aTT-oO-MqP"/>
-                            <constraint firstItem="ryc-7m-Ywt" firstAttribute="leading" secondItem="KpI-FD-YH0" secondAttribute="leading" constant="343" id="dhI-YQ-GKN"/>
                             <constraint firstItem="lZJ-KW-3zq" firstAttribute="top" secondItem="KpI-FD-YH0" secondAttribute="top" constant="14" id="ePx-ng-NaR"/>
                             <constraint firstItem="KpI-FD-YH0" firstAttribute="bottom" secondItem="HVC-Xp-Qne" secondAttribute="bottom" constant="38" id="etr-ja-GIH"/>
                             <constraint firstItem="9hr-4M-qP8" firstAttribute="leading" secondItem="wnS-qB-c8B" secondAttribute="leadingMargin" constant="5" id="kI7-I4-jho"/>
@@ -375,7 +360,6 @@
                             <constraint firstItem="FaR-Zc-gF1" firstAttribute="top" secondItem="KpI-FD-YH0" secondAttribute="top" constant="40" id="rkC-Ed-2Nu"/>
                             <constraint firstItem="VvL-jQ-Lw6" firstAttribute="centerX" secondItem="KpI-FD-YH0" secondAttribute="centerX" id="sei-aZ-k0H"/>
                             <constraint firstItem="qDY-Wx-KvM" firstAttribute="leading" secondItem="KpI-FD-YH0" secondAttribute="leading" id="wla-bl-61a"/>
-                            <constraint firstItem="KpI-FD-YH0" firstAttribute="trailing" secondItem="ryc-7m-Ywt" secondAttribute="trailing" constant="25" id="zh2-Lw-fuF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="kPh-S3-2W5" colorLabel="IBBuiltInLabel-Red">
@@ -409,6 +393,8 @@
                         <outlet property="name" destination="ojg-PL-08o" id="dak-4D-rkz"/>
                         <outlet property="nickName" destination="DjY-JT-KlH" id="ZWj-UM-nFe"/>
                         <outlet property="surname" destination="CA6-dH-z7e" id="JTX-ew-zi2"/>
+                        <outlet property="tableView" destination="HVC-Xp-Qne" id="hSp-dN-X60"/>
+                        <segue destination="ENN-eE-wEV" kind="show" identifier="" id="5Yx-xC-RTp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsd-gT-oxs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -430,7 +416,7 @@
                                 <rect key="frame" x="10" y="152" width="394" height="347"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="A0s-rV-Jii">
-                                        <rect key="frame" x="10" y="0.0" width="374" height="258.5"/>
+                                        <rect key="frame" x="10" y="0.0" width="374" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
@@ -438,7 +424,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqg-XT-vA3">
-                                        <rect key="frame" x="100" y="312.5" width="194" height="34.5"/>
+                                        <rect key="frame" x="100" y="104" width="194" height="243"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Save"/>
@@ -467,7 +453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dp9-3N-ki2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537.68115942029" y="93.75"/>
+            <point key="canvasLocation" x="3270" y="72"/>
         </scene>
         <!--Detail User InfoVC-->
         <scene sceneID="5dC-fA-UPe">
@@ -482,7 +468,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sor-dS-VVq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="627"/>
+            <point key="canvasLocation" x="2016" y="428"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wjH-8x-N0M">
@@ -502,7 +488,7 @@
         <!--All Artists-->
         <scene sceneID="d0d-wJ-g0b">
             <objects>
-                <tableViewController id="ENN-eE-wEV" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AllArtistTVC" id="ENN-eE-wEV" customClass="AllArtistTVC" customModule="ArtPlace" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="afI-Sn-Z2h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -516,6 +502,9 @@
                                 <segment title="Dj"/>
                                 <segment title="All"/>
                             </segments>
+                            <connections>
+                                <action selector="segmentedControl" destination="ENN-eE-wEV" eventType="valueChanged" id="MxL-4m-aju"/>
+                            </connections>
                         </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Upc-yc-Gx2">
@@ -527,16 +516,15 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ENN-eE-wEV" id="fSk-Eg-iMB"/>
-                            <outlet property="delegate" destination="ENN-eE-wEV" id="lSU-2E-ulI"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="All Artists" id="B03-hG-zhD"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="F44-ej-LgT" id="5Ej-rD-yWc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obi-SA-zZ5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2571" y="-583"/>
+            <point key="canvasLocation" x="1980" y="-331"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Im-gN-Frv">

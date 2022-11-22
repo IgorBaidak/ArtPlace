@@ -33,3 +33,8 @@ class PlaylistMusician {
         "the_prodigy_-_light_up_the_sky_(zan__skill_remix)_stopmusic.net"
     ]
 }
+
+class PlaylistAll {
+    static  var playlistAll = [PlaylistDJ.trackList, PlaylistSonger.trackList, PlaylistMusician.trackList]
+}
+

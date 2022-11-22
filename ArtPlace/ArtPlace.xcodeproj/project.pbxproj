@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		33223DD228F1AF0A00854F30 /* SnapshotData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33223DD128F1AF0A00854F30 /* SnapshotData.swift */; };
-		33223DDA28FDDC8E00854F30 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33223DD928FDDC8E00854F30 /* TableViewCell.swift */; };
 		33223E0829026D1500854F30 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33223E0729026D1500854F30 /* Playlist.swift */; };
+		3322E8B7292D1D2C0049AE5F /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322E8B6292D1D2C0049AE5F /* Snapshot.swift */; };
+		3322E8BC292D29D50049AE5F /* AllArtistTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322E8BB292D29D50049AE5F /* AllArtistTVC.swift */; };
+		3322E916292D492E0049AE5F /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3322E915292D492E0049AE5F /* Registration.swift */; };
+		33243DD7292570A60048A1FF /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33243DD6292570A60048A1FF /* Alert.swift */; };
 		3331ABA6291E1BE600231FF4 /* TypeArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3331ABA5291E1BE600231FF4 /* TypeArtist.swift */; };
 		3331ABA92922C00900231FF4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3331ABA82922C00900231FF4 /* FirebaseAnalytics */; };
 		3331ABAB2922C00900231FF4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3331ABAA2922C00900231FF4 /* FirebaseAuth */; };
@@ -24,16 +27,8 @@
 		3331ABBD2922C00900231FF4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 3331ABBC2922C00900231FF4 /* FirebaseMessaging */; };
 		3331ABBF2922C00900231FF4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3331ABBE2922C00900231FF4 /* FirebaseStorage */; };
 		3331ABC12922C00900231FF4 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3331ABC02922C00900231FF4 /* FirebaseStorageCombine-Community */; };
-		3331AC342924281800231FF4 /* gusgus_-_crossfade_(maceo_plex_mix)_stopmusic.net.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC2C2924280A00231FF4 /* gusgus_-_crossfade_(maceo_plex_mix)_stopmusic.net.mp3 */; };
-		3331AC352924281800231FF4 /* dawin__braindead_-_shakalarma_of_the_party_(fournvmes_mashup)_stopmusic.net.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC2D2924280C00231FF4 /* dawin__braindead_-_shakalarma_of_the_party_(fournvmes_mashup)_stopmusic.net.mp3 */; };
-		3331AC362924281800231FF4 /* djeff-zakes-bantwini-zugu-zugu-extended-mix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC2E2924280E00231FF4 /* djeff-zakes-bantwini-zugu-zugu-extended-mix.mp3 */; };
-		3331AC372924281800231FF4 /* Styline x Mr. Sid vs. Dave Ruthwell - DONT STOP (Extended Mix) vk.com-goodclubmusic_(YoSound.ru).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC2F2924281000231FF4 /* Styline x Mr. Sid vs. Dave Ruthwell - DONT STOP (Extended Mix) vk.com-goodclubmusic_(YoSound.ru).mp3 */; };
-		3331AC382924281800231FF4 /* Progressive_HOUSE_-_Ad_Brown_Ben_Coda_-_Rinse_Repeat_Q.U.A.K.E_Remix_(SongHouse.me) (1).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC302924281200231FF4 /* Progressive_HOUSE_-_Ad_Brown_Ben_Coda_-_Rinse_Repeat_Q.U.A.K.E_Remix_(SongHouse.me) (1).mp3 */; };
-		3331AC392924281800231FF4 /* niels_van_gogh_-_pulverturm_(tiesto_s_big_room_extended_mix)_stopmusic.net.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC312924281400231FF4 /* niels_van_gogh_-_pulverturm_(tiesto_s_big_room_extended_mix)_stopmusic.net.mp3 */; };
-		3331AC3A2924281800231FF4 /* fournvmes_-_mumbai_(original_mix)_stopmusic.net.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC322924281600231FF4 /* fournvmes_-_mumbai_(original_mix)_stopmusic.net.mp3 */; };
-		3331AC3B2924281800231FF4 /* kshmr_-_no_regrets_(feat._yves_v__krewella)_stopmusic.net.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC332924281800231FF4 /* kshmr_-_no_regrets_(feat._yves_v__krewella)_stopmusic.net.mp3 */; };
-		3331AC3E2924287D00231FF4 /* kanye_west__lil_pump_-_i_love_it_(boehm_remix)_stopmusic.net.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC3C2924287B00231FF4 /* kanye_west__lil_pump_-_i_love_it_(boehm_remix)_stopmusic.net.mp3 */; };
-		3331AC3F2924287D00231FF4 /* hugel__amber_van_day_-_wtf_(tujamo_remix)_stopmusic.net.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3331AC3D2924287D00231FF4 /* hugel__amber_van_day_-_wtf_(tujamo_remix)_stopmusic.net.mp3 */; };
+		3331AC4129242A2E00231FF4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3331AC4029242A2E00231FF4 /* TableViewCell.swift */; };
+		3331AC4329242B2900231FF4 /* ExitAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3331AC4229242B2900231FF4 /* ExitAccount.swift */; };
 		33474A4228E37152001B1BE6 /* DetailUserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33474A4128E37152001B1BE6 /* DetailUserInfoVC.swift */; };
 		3368831028D50DBE00581F80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368830F28D50DBE00581F80 /* AppDelegate.swift */; };
 		3368831228D50DBE00581F80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368831128D50DBE00581F80 /* SceneDelegate.swift */; };
@@ -47,19 +42,14 @@
 
 /* Begin PBXFileReference section */
 		33223DD128F1AF0A00854F30 /* SnapshotData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotData.swift; sourceTree = "<group>"; };
-		33223DD928FDDC8E00854F30 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		33223E0729026D1500854F30 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		3322E8B6292D1D2C0049AE5F /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
+		3322E8BB292D29D50049AE5F /* AllArtistTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllArtistTVC.swift; sourceTree = "<group>"; };
+		3322E915292D492E0049AE5F /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		33243DD6292570A60048A1FF /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		3331ABA5291E1BE600231FF4 /* TypeArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeArtist.swift; sourceTree = "<group>"; };
-		3331AC2C2924280A00231FF4 /* gusgus_-_crossfade_(maceo_plex_mix)_stopmusic.net.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "gusgus_-_crossfade_(maceo_plex_mix)_stopmusic.net.mp3"; sourceTree = "<group>"; };
-		3331AC2D2924280C00231FF4 /* dawin__braindead_-_shakalarma_of_the_party_(fournvmes_mashup)_stopmusic.net.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dawin__braindead_-_shakalarma_of_the_party_(fournvmes_mashup)_stopmusic.net.mp3"; sourceTree = "<group>"; };
-		3331AC2E2924280E00231FF4 /* djeff-zakes-bantwini-zugu-zugu-extended-mix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "djeff-zakes-bantwini-zugu-zugu-extended-mix.mp3"; sourceTree = "<group>"; };
-		3331AC2F2924281000231FF4 /* Styline x Mr. Sid vs. Dave Ruthwell - DONT STOP (Extended Mix) vk.com-goodclubmusic_(YoSound.ru).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Styline x Mr. Sid vs. Dave Ruthwell - DONT STOP (Extended Mix) vk.com-goodclubmusic_(YoSound.ru).mp3"; sourceTree = "<group>"; };
-		3331AC302924281200231FF4 /* Progressive_HOUSE_-_Ad_Brown_Ben_Coda_-_Rinse_Repeat_Q.U.A.K.E_Remix_(SongHouse.me) (1).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Progressive_HOUSE_-_Ad_Brown_Ben_Coda_-_Rinse_Repeat_Q.U.A.K.E_Remix_(SongHouse.me) (1).mp3"; sourceTree = "<group>"; };
-		3331AC312924281400231FF4 /* niels_van_gogh_-_pulverturm_(tiesto_s_big_room_extended_mix)_stopmusic.net.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "niels_van_gogh_-_pulverturm_(tiesto_s_big_room_extended_mix)_stopmusic.net.mp3"; sourceTree = "<group>"; };
-		3331AC322924281600231FF4 /* fournvmes_-_mumbai_(original_mix)_stopmusic.net.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "fournvmes_-_mumbai_(original_mix)_stopmusic.net.mp3"; sourceTree = "<group>"; };
-		3331AC332924281800231FF4 /* kshmr_-_no_regrets_(feat._yves_v__krewella)_stopmusic.net.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "kshmr_-_no_regrets_(feat._yves_v__krewella)_stopmusic.net.mp3"; sourceTree = "<group>"; };
-		3331AC3C2924287B00231FF4 /* kanye_west__lil_pump_-_i_love_it_(boehm_remix)_stopmusic.net.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "kanye_west__lil_pump_-_i_love_it_(boehm_remix)_stopmusic.net.mp3"; sourceTree = "<group>"; };
-		3331AC3D2924287D00231FF4 /* hugel__amber_van_day_-_wtf_(tujamo_remix)_stopmusic.net.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hugel__amber_van_day_-_wtf_(tujamo_remix)_stopmusic.net.mp3"; sourceTree = "<group>"; };
+		3331AC4029242A2E00231FF4 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		3331AC4229242B2900231FF4 /* ExitAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitAccount.swift; sourceTree = "<group>"; };
 		33474A4128E37152001B1BE6 /* DetailUserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserInfoVC.swift; sourceTree = "<group>"; };
 		3368830C28D50DBE00581F80 /* ArtPlace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtPlace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3368830F28D50DBE00581F80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,16 +90,6 @@
 		33223DDB2902690400854F30 /* Tracks */ = {
 			isa = PBXGroup;
 			children = (
-				3331AC2D2924280C00231FF4 /* dawin__braindead_-_shakalarma_of_the_party_(fournvmes_mashup)_stopmusic.net.mp3 */,
-				3331AC2E2924280E00231FF4 /* djeff-zakes-bantwini-zugu-zugu-extended-mix.mp3 */,
-				3331AC322924281600231FF4 /* fournvmes_-_mumbai_(original_mix)_stopmusic.net.mp3 */,
-				3331AC3D2924287D00231FF4 /* hugel__amber_van_day_-_wtf_(tujamo_remix)_stopmusic.net.mp3 */,
-				3331AC3C2924287B00231FF4 /* kanye_west__lil_pump_-_i_love_it_(boehm_remix)_stopmusic.net.mp3 */,
-				3331AC2C2924280A00231FF4 /* gusgus_-_crossfade_(maceo_plex_mix)_stopmusic.net.mp3 */,
-				3331AC332924281800231FF4 /* kshmr_-_no_regrets_(feat._yves_v__krewella)_stopmusic.net.mp3 */,
-				3331AC312924281400231FF4 /* niels_van_gogh_-_pulverturm_(tiesto_s_big_room_extended_mix)_stopmusic.net.mp3 */,
-				3331AC302924281200231FF4 /* Progressive_HOUSE_-_Ad_Brown_Ben_Coda_-_Rinse_Repeat_Q.U.A.K.E_Remix_(SongHouse.me) (1).mp3 */,
-				3331AC2F2924281000231FF4 /* Styline x Mr. Sid vs. Dave Ruthwell - DONT STOP (Extended Mix) vk.com-goodclubmusic_(YoSound.ru).mp3 */,
 			);
 			path = Tracks;
 			sourceTree = "<group>";
@@ -122,10 +102,27 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		3322E8B8292D1D3B0049AE5F /* Snapshot */ = {
+			isa = PBXGroup;
+			children = (
+				3322E8B6292D1D2C0049AE5F /* Snapshot.swift */,
+			);
+			path = Snapshot;
+			sourceTree = "<group>";
+		};
+		33243DD5292570030048A1FF /* ExitAccount */ = {
+			isa = PBXGroup;
+			children = (
+				3331AC4229242B2900231FF4 /* ExitAccount.swift */,
+			);
+			path = ExitAccount;
+			sourceTree = "<group>";
+		};
 		3354990E291947D700AB9B2A /* TypeArtist */ = {
 			isa = PBXGroup;
 			children = (
 				3331ABA5291E1BE600231FF4 /* TypeArtist.swift */,
+				3322E915292D492E0049AE5F /* Registration.swift */,
 			);
 			path = TypeArtist;
 			sourceTree = "<group>";
@@ -150,16 +147,19 @@
 			isa = PBXGroup;
 			children = (
 				3354990E291947D700AB9B2A /* TypeArtist */,
-				33223E0429026C6400854F30 /* DataSource */,
 				33223DDB2902690400854F30 /* Tracks */,
-				3368832728DA12A200581F80 /* Delegates */,
+				33223E0429026C6400854F30 /* DataSource */,
 				3368832628DA129300581F80 /* Controllers */,
+				33243DD5292570030048A1FF /* ExitAccount */,
+				3322E8B8292D1D3B0049AE5F /* Snapshot */,
+				3368832728DA12A200581F80 /* Delegates */,
 				3368831528D50DBE00581F80 /* Main.storyboard */,
 				3368831828D50DBF00581F80 /* Assets.xcassets */,
 				3368831A28D50DBF00581F80 /* LaunchScreen.storyboard */,
 				3368832C28DA543E00581F80 /* GoogleService-Info.plist */,
 				3368831D28D50DBF00581F80 /* Info.plist */,
 				33223DD128F1AF0A00854F30 /* SnapshotData.swift */,
+				33243DD6292570A60048A1FF /* Alert.swift */,
 			);
 			path = ArtPlace;
 			sourceTree = "<group>";
@@ -168,9 +168,10 @@
 			isa = PBXGroup;
 			children = (
 				3368832828DA12CC00581F80 /* AccountVC.swift */,
-				33223DD928FDDC8E00854F30 /* TableViewCell.swift */,
 				3368832A28DA1F4200581F80 /* AuthRegVC.swift */,
 				33474A4128E37152001B1BE6 /* DetailUserInfoVC.swift */,
+				3331AC4029242A2E00231FF4 /* TableViewCell.swift */,
+				3322E8BB292D29D50049AE5F /* AllArtistTVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -260,20 +261,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3331AC3B2924281800231FF4 /* kshmr_-_no_regrets_(feat._yves_v__krewella)_stopmusic.net.mp3 in Resources */,
-				3331AC3E2924287D00231FF4 /* kanye_west__lil_pump_-_i_love_it_(boehm_remix)_stopmusic.net.mp3 in Resources */,
-				3331AC3A2924281800231FF4 /* fournvmes_-_mumbai_(original_mix)_stopmusic.net.mp3 in Resources */,
-				3331AC362924281800231FF4 /* djeff-zakes-bantwini-zugu-zugu-extended-mix.mp3 in Resources */,
-				3331AC392924281800231FF4 /* niels_van_gogh_-_pulverturm_(tiesto_s_big_room_extended_mix)_stopmusic.net.mp3 in Resources */,
-				3331AC352924281800231FF4 /* dawin__braindead_-_shakalarma_of_the_party_(fournvmes_mashup)_stopmusic.net.mp3 in Resources */,
 				3368831C28D50DBF00581F80 /* LaunchScreen.storyboard in Resources */,
-				3331AC372924281800231FF4 /* Styline x Mr. Sid vs. Dave Ruthwell - DONT STOP (Extended Mix) vk.com-goodclubmusic_(YoSound.ru).mp3 in Resources */,
-				3331AC342924281800231FF4 /* gusgus_-_crossfade_(maceo_plex_mix)_stopmusic.net.mp3 in Resources */,
 				3368832D28DA543E00581F80 /* GoogleService-Info.plist in Resources */,
 				3368831928D50DBF00581F80 /* Assets.xcassets in Resources */,
-				3331AC3F2924287D00231FF4 /* hugel__amber_van_day_-_wtf_(tujamo_remix)_stopmusic.net.mp3 in Resources */,
 				3368831728D50DBE00581F80 /* Main.storyboard in Resources */,
-				3331AC382924281800231FF4 /* Progressive_HOUSE_-_Ad_Brown_Ben_Coda_-_Rinse_Repeat_Q.U.A.K.E_Remix_(SongHouse.me) (1).mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,13 +275,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3331AC4329242B2900231FF4 /* ExitAccount.swift in Sources */,
 				3368831028D50DBE00581F80 /* AppDelegate.swift in Sources */,
+				3322E916292D492E0049AE5F /* Registration.swift in Sources */,
+				3322E8BC292D29D50049AE5F /* AllArtistTVC.swift in Sources */,
 				3368832928DA12CC00581F80 /* AccountVC.swift in Sources */,
 				33474A4228E37152001B1BE6 /* DetailUserInfoVC.swift in Sources */,
+				3331AC4129242A2E00231FF4 /* TableViewCell.swift in Sources */,
 				33223E0829026D1500854F30 /* Playlist.swift in Sources */,
+				33243DD7292570A60048A1FF /* Alert.swift in Sources */,
 				3331ABA6291E1BE600231FF4 /* TypeArtist.swift in Sources */,
-				33223DDA28FDDC8E00854F30 /* TableViewCell.swift in Sources */,
 				3368831228D50DBE00581F80 /* SceneDelegate.swift in Sources */,
+				3322E8B7292D1D2C0049AE5F /* Snapshot.swift in Sources */,
 				3368832B28DA1F4200581F80 /* AuthRegVC.swift in Sources */,
 				33223DD228F1AF0A00854F30 /* SnapshotData.swift in Sources */,
 			);

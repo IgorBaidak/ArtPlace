@@ -83,20 +83,27 @@ class AuthRegVC: UIViewController {
            let email = emailTF.text, !email.isEmpty,
            let password = passwordTF.text, !password.isEmpty
         {
-            Auth.auth().createUser(withEmail: email, password: password) { (result, error)  in
-                if error == nil {
-                    if let result = result {
-                        print (result.user.uid)
-                        let dataBase = Database.database().reference().child("users")
-                        dataBase.child(result.user.uid).updateChildValues(["nick" : nick, "name" : name, "surname" : surname, "avatarURL": String(), "audioURL": String(), "email" : email, "typeArtist" : "\(self.currentArtist)"])
-                        DispatchQueue.main.async {
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-                    }
-                }
+            
+            Registration().registration(email: email, password: password)
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
+                self.navigationController?.pushViewController(vc, animated: true)
             }
+//            Auth.auth().createUser(withEmail: email, password: password) { (result, error)  in
+//                if error == nil {
+//                    if let result = result {
+//                        print (result.user.uid)
+//                        let dataBase = Database.database().reference().child("users")
+//                        dataBase.child(result.user.uid).updateChildValues(["nick" : nick, "name" : name, "surname" : surname, "avatarURL": String(), "audioURL": String(), "email" : email, "typeArtist" : "\(self.currentArtist)"])
+//                        DispatchQueue.main.async {
+//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                            let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
+//                            self.navigationController?.pushViewController(vc, animated: true)
+//                        }
+//                    }
+//                }
+//            }
         } else {
             self.showAlert()
         }

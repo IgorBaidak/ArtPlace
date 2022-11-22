@@ -29,7 +29,7 @@ class AccountVC: UIViewController {
     @IBOutlet weak var addAvatarButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var viewArtist: UIImageView!
     
     var ref = Database.database().reference()
     var currentUserID = Auth.auth().currentUser?.uid
@@ -45,7 +45,6 @@ class AccountVC: UIViewController {
     // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        playCell()
         downloadAvatar()
         // делаем круглым Blur Effect
         blurEffectView.clipsToBounds = true
@@ -56,39 +55,9 @@ class AccountVC: UIViewController {
                                               .layerMinXMinYCorner]
         
         // достаем необходимые значения из Realtime Database
-        ref.child("users").child(currentUserID!).child("name").observeSingleEvent(of: .value) { (snapshot) in
-            guard snapshot != nil else { return }
-            print(snapshot)
-            let userName = snapshot.value as? String ?? "name"
-            DispatchQueue.main.async {
-                self.name.text = userName
-            }
-        }
-        ref.child("users").child(currentUserID!).child("surname").observeSingleEvent(of: .value) { (snapshot) in
-            guard snapshot != nil else { return }
-            print(snapshot)
-            let userSurname = snapshot.value as? String ?? "surname"
-            self.surname.text = userSurname
-        }
-        ref.child("users").child(currentUserID!).child("nick").observeSingleEvent(of: .value) { (snapshot) in
-            guard snapshot != nil else { return }
-            print(snapshot)
-            let userNick = snapshot.value as? String ?? "nick"
-            self.nickName.text = userNick
-        }
-        ref.child("users").child(currentUserID!).child("typeArtist").observeSingleEvent(of: .value) { (snapshot) in
-            guard snapshot != nil else { return }
-            print(snapshot)
-            let artist = snapshot.value as? String ?? "typeArtist"
-            self.artist = artist
-            self.myContentView.text = artist
-        }
+        snapshot()
+        currentPlaylistFunc()
     }
-    
-    
-    // MARK: - Table view data source
-
-    
     
     // MARK: Action's
     
@@ -99,6 +68,15 @@ class AccountVC: UIViewController {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
         
+    }
+    
+    
+    @IBAction func allArtistButton() {
+//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            if let destVC = segue.destination as? AllArtistTVC {
+//                destVC.typeArtist = DataSource.trackList[indexPath.row]
+//            }
+//        }
     }
     
     
@@ -117,13 +95,7 @@ class AccountVC: UIViewController {
     
     
     @IBAction func exitAccountAction(_ sender: UIBarButtonItem) {
-        do {
-            try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let _ = storyboard.instantiateInitialViewController()
+        ExitAccount().exit()
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -175,31 +147,35 @@ class AccountVC: UIViewController {
     }
     
     
+    
+    
     private func currentPlaylistFunc() {
         if myContentView.text == "DJ" {
-            currentPlaylist = PlaylistDJ.trackList//.count
+            currentPlaylist = PlaylistDJ.trackList
         } else if myContentView.text == "Songer" {
-            currentPlaylist = PlaylistSonger.trackList//.count
+            currentPlaylist = PlaylistSonger.trackList
         } else {
-            currentPlaylist = PlaylistMusician.trackList//.count
+            currentPlaylist = PlaylistMusician.trackList/
         }
+        tableView.reloadData()
     }
     
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destVC = segue.destination as? AllArtistTVC {
+        destVC.typeArtist = myContentView.text!
+    }
+}
 
 }
     
 
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
     
     // MARK: Extension's
     extension AccountVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -219,7 +195,7 @@ class AccountVC: UIViewController {
             }
         }
 }
-
+// MARK: Create and Config CELL
 extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -230,23 +206,13 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
         var cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         let nameTrack = currentPlaylist[indexPath.row]
         cell.textLabel?.text = nameTrack
-        cell.imageView?.image = UIImage(named: nameTrack)
+        cell.imageView?.image = UIImage(named: artist)
                 return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // здесь должна быть функция playCell
     }
-    
-    private func playCell() {
-                 let audioRef = Storage.storage().reference().child("audio").child("RASA - Погудим.mp3")
-                    audioRef.getData(maxSize: 10 * 1024 * 1024) { data, error in
-    
-                    let player = AVPlayer()
-                        player.play()
-        }
-    }
-    
 }
 
 
